@@ -37,5 +37,4 @@ Once you have the project open in your browser, you can navigate through the dif
 ## Contact
 For inquiries or collaboration opportunities, please reach out to me:
 
-Email: benjamin.acuff@example.com
 LinkedIn: linkedin.com/in/benjaminacuff
