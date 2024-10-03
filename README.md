@@ -8,7 +8,6 @@ Welcome to my portfolio website! This site showcases my academic achievements, p
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
-- [License](#license)
 - [Contact](#contact)
 
 ## Features
@@ -31,3 +30,12 @@ To run this project locally, follow these steps:
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-username/your-repository-name.git
+   ```
+## Usage
+Once you have the project open in your browser, you can navigate through the different sections using the navigation links at the top. Explore the content to learn more about my academic work, resume, and internship experience. You can also connect with me on LinkedIn through the provided link.
+
+## Contact
+For inquiries or collaboration opportunities, please reach out to me:
+
+Email: benjamin.acuff@example.com
+LinkedIn: linkedin.com/in/benjaminacuff
