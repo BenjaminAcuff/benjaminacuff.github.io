@@ -39,6 +39,12 @@
             font-size: 2.5rem;
             letter-spacing: 2px;
             margin: 0;
+            transition: transform var(--transition-speed), color var(--transition-speed);
+        }
+
+        header h1:hover {
+            transform: scale(1.05); /* Slightly enlarges the title */
+            color: var(--accent-color); /* Changes color on hover */
         }
 
         #spinning-star {
@@ -178,7 +184,7 @@
 </head>
 <body>
     <header>
-        <h1 id="dynamic-title"></h1>
+        <h1>Benjamin Acuff | Cybersecurity Portfolio</h1>
         <div id="spinning-star">
             <svg width="50px" height="50px" viewBox="0 -1 20 20" xmlns="http://www.w3.org/2000/svg">
                 <g id="star" transform="translate(-2 -3)">
@@ -224,49 +230,28 @@
     </section>
     
     <section id="internship-content">
-        <h2>Internship Content</h2>
-        <p><a href="Internship_Learning_Objectives_Benjamin_Acuff.pdf" target="_blank">View my internship learning objectives</a></p>
+        <h2>Internship Experience</h2>
+        <p>As a Service Desk Intern at an IT company, I am involved in various projects focusing on:</p>
+        <ul>
+            <li>Systems administration</li>
+            <li>Effective business communication</li>
+            <li>Cybersecurity solutions configuration</li>
+            <li>Web development and troubleshooting</li>
+            <li>IT ticket management</li>
+        </ul>
     </section>
-
-    <section id="linkedin">
-        <h2>Connect with me on LinkedIn</h2>
-        <p><a href="https://www.linkedin.com/in/benjamin-acuff-0a5b71258/" target="_blank">My LinkedIn Profile</a></p>
-    </section>
-
+    
     <footer>
-        <p>&copy; 2024 Benjamin Acuff. All Rights Reserved.</p>
+        <p>&copy; 2024 Benjamin Acuff | <a href="https://www.linkedin.com/in/benjamin-acuff" target="_blank">LinkedIn Profile</a></p>
     </footer>
-
+    
     <script>
-        // Dynamic title generation
-        const titles = ["Aspiring Cybersecurity Leader", "Tech Enthusiast", "Continuous Learner", "Passionate about Cyber Defense"];
-        let titleIndex = 0;
-
-        function updateTitle() {
-            document.getElementById('dynamic-title').innerText = titles[titleIndex];
-            titleIndex = (titleIndex + 1) % titles.length;
-        }
-
-        setInterval(updateTitle, 3000); // Change title every 3 seconds
-
-        // Scroll effects for sections
-        const sections = document.querySelectorAll("section");
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
+        // Adding visibility to sections on load
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll("section");
+            sections.forEach(section => {
+                section.classList.add("visible");
             });
-        }, options);
-
-        sections.forEach(section => {
-            observer.observe(section);
         });
     </script>
 </body>
