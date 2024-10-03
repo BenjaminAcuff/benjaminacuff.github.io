@@ -47,6 +47,7 @@
         }
 
         nav a {
+            position: relative;
             color: var(--accent-color);
             margin: 0 20px;
             text-decoration: none;
@@ -54,8 +55,22 @@
             transition: color var(--transition-speed);
         }
 
-        nav a:hover {
-            color: var(--hover-color);
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+            left: 0;
+            bottom: -5px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease-out;
+        }
+
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         /* Main Section Styling */
@@ -67,11 +82,14 @@
             width: 80%;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
 
-        section:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
@@ -97,6 +115,8 @@
             border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transform: translateY(0);
+            transition: transform var(--transition-speed);
         }
 
         /* Footer */
@@ -109,33 +129,55 @@
         }
 
         /* Button styles */
-        .toggle-button {
-            display: none;
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
+        a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* 3D Hover Animation */
+        section:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+        }
+        
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(50px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        section {
-            opacity: 0;
-            animation: fadeIn var(--transition-speed) ease-out forwards;
-        }
-
-        section:nth-child(odd) {
-            animation-delay: 0.3s;
-        }
-
-        section:nth-child(even) {
-            animation-delay: 0.5s;
-        }
+        /* Parallax Effect */
+        window.addEventListener('scroll', function() {
+            const image = document.querySelector('.profile-image');
+            let offset = window.pageYOffset;
+            image.style.transform = `translateY(${offset * 0.2}px)`; 
+        });
     </style>
 </head>
 <body>
     <header>
-        <h1>Benjamin Acuff | Cybersecurity Portfolio</h1>
+        <h1 id="dynamic-title"></h1>
     </header>
     
     <nav>
@@ -154,7 +196,7 @@
     
     <section id="resume">
         <h2>Resume</h2>
-        <p><a href="Resume_Benjamin_Acuff.pdf" target="_blank" style="color: var(--accent-color);">View my resume</a></p>
+        <p><a href="Resume_Benjamin_Acuff.pdf" target="_blank">View my resume</a></p>
     </section>
 
     <section id="academic-work">
@@ -174,13 +216,13 @@
     
     <section id="internship-content">
         <h2>Internship Content</h2>
-        <p><a href="Internship_Learning_Objectives_Benjamin_Acuff.pdf" target="_blank" style="color: var(--accent-color);">View my internship learning objectives</a></p>
+        <p><a href="Internship_Learning_Objectives_Benjamin_Acuff.pdf" target="_blank">View my internship learning objectives</a></p>
     </section>
 
     <section id="linkedin">
         <h2>Connect with me on LinkedIn</h2>
         <p>You can find me on LinkedIn for networking and collaboration:</p>
-        <p><a href="https://www.linkedin.com/in/benjaminacuff" target="_blank" style="color: var(--accent-color);">View my LinkedIn</a></p>
+        <p><a href="https://www.linkedin.com/in/benjaminacuff" target="_blank">View my LinkedIn</a></p>
     </section>
 
     <footer>
@@ -199,6 +241,32 @@
                 });
             });
         });
+
+        // Scroll-based fade-in animation for sections
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Typing animation for header
+        const titleText = "Benjamin Acuff | Cybersecurity Portfolio";
+        let i = 0;
+        function typeWriter() {
+            if (i < titleText.length) {
+                document.getElementById('dynamic-title').innerHTML += titleText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        window.onload = typeWriter;
     </script>
 </body>
 </html>
