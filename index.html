@@ -21,14 +21,14 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #023e8a 0%, #0096c7 100%); /* Match header gradient */
+            background-color: var(--bg-color);
             color: var(--text-color);
-            transition: background var(--transition-speed), color var(--transition-speed);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #023e8a 0%, #0096c7 100%); /* Match body gradient */
+            background: linear-gradient(135deg, #023e8a, #0096c7);
             color: white;
             padding: 20px 0;
             text-align: center;
@@ -41,6 +41,12 @@
             margin: 0;
             transition: transform var(--transition-speed), color var(--transition-speed);
         }
+
+        /* Removed hover effect on header title */
+        /* header h1:hover {
+            transform: scale(1.05); 
+            color: var(--accent-color); 
+        } */
 
         #spinning-star {
             display: inline-block;
@@ -215,40 +221,45 @@
             <li><strong>Posters-at-the-Capitol Research Project:</strong> 
                 <a href="https://digitalcommons.murraystate.edu/postersatthecapitol/2024/NKU/12/" target="_blank">View Project</a>
             </li>
-            <li><strong>Cybersecurity Lab Reports:</strong> 
-                <a href="https://github.com/benacuff/cybersecurity-labs" target="_blank">View Labs</a>
+            <li><strong>Advancing IoT Network Security (CYS 485 Research Paper):</strong> 
+                <a href="CYS_485_Research_Paper_Benjamin_Acuff.pdf" target="_blank">View PDF</a>
             </li>
-            <li><strong>Capstone Project (ETBR):</strong> 
-                <a href="https://doi.org/10.1007/978-3-031-43880-5_11" target="_blank">View Project</a>
+            <li><strong>Risk Management Plan (CYS 310 Final Project):</strong> 
+                <a href="CYS_310_Risk_Management_Plan_Benjamin_Acuff.pdf" target="_blank">View PDF</a>
             </li>
         </ul>
     </section>
     
     <section id="internship-content">
-        <h2>Internship Content</h2>
-        <p>As a Service Desk intern, my responsibilities include:</p>
-        <ul>
-            <li>Assisting in IT support tasks and troubleshooting</li>
-            <li>Managing IT tickets using ConnectWise</li>
-            <li>Configuring cybersecurity solutions</li>
-            <li>Contributing to web development projects</li>
-        </ul>
+        <h2>Internship Experience</h2>
+        <p>As a Service Desk Intern at an IT company, I assist in troubleshooting and resolving IT issues while enhancing my skills in customer service, network security, and systems administration.</p>
     </section>
-
+    
     <footer>
-        <p>© 2024 Benjamin Acuff. All rights reserved.</p>
+        <p>© 2024 Benjamin Acuff | All Rights Reserved</p>
     </footer>
     
     <script>
-        // Script to make sections appear smoothly on load
-        window.onload = function() {
-            const sections = document.querySelectorAll('section');
-            sections.forEach((section, index) => {
-                setTimeout(() => {
-                    section.classList.add('visible');
-                }, index * 200); // Delay each section's appearance
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll("section");
+            const options = {
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    } else {
+                        entry.target.classList.remove("visible");
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
             });
-        };
+        });
     </script>
 </body>
 </html>
