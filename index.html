@@ -21,14 +21,14 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #023e8a, #0096c7); /* Updated to match header gradient */
+            background: linear-gradient(135deg, #023e8a 0%, #0096c7 100%); /* Match header gradient */
             color: var(--text-color);
             transition: background var(--transition-speed), color var(--transition-speed);
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #023e8a, #0096c7);
+            background: linear-gradient(135deg, #023e8a 0%, #0096c7 100%); /* Match body gradient */
             color: white;
             padding: 20px 0;
             text-align: center;
@@ -226,27 +226,29 @@
     
     <section id="internship-content">
         <h2>Internship Content</h2>
-        <p>As a Service Desk Intern, I handle various IT support tasks, including:</p>
+        <p>As a Service Desk intern, my responsibilities include:</p>
         <ul>
-            <li>IT ticket management and troubleshooting.</li>
-            <li>Assisting with network security measures.</li>
-            <li>Providing customer support and effective communication.</li>
-            <li>Collaborating on web development projects.</li>
+            <li>Assisting in IT support tasks and troubleshooting</li>
+            <li>Managing IT tickets using ConnectWise</li>
+            <li>Configuring cybersecurity solutions</li>
+            <li>Contributing to web development projects</li>
         </ul>
     </section>
 
     <footer>
-        <p>&copy; 2024 Benjamin Acuff</p>
-        <p><a href="https://www.linkedin.com/in/benjamin-acuff/" target="_blank">Connect with me on LinkedIn</a></p>
+        <p>© 2024 Benjamin Acuff. All rights reserved.</p>
     </footer>
-
+    
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sections = document.querySelectorAll("section");
-            sections.forEach(section => {
-                section.classList.add("visible");
+        // Script to make sections appear smoothly on load
+        window.onload = function() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.classList.add('visible');
+                }, index * 200); // Delay each section's appearance
             });
-        });
+        };
     </script>
 </body>
 </html>
