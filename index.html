@@ -3,104 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benjamin Acuff's Portfolio</title>
+    <title>Benjamin Acuff | Cybersecurity Portfolio</title>
     <link rel="icon" type="image/png" href="Benjamin_Acuff_ico.PNG">
     <style>
+        /* Root styles for theming */
+        :root {
+            --primary-color: #1e1e1e;
+            --accent-color: #00b4d8;
+            --text-color: #f1f1f1;
+            --bg-color: #141414;
+            --hover-color: #023e8a;
+            --border-radius: 10px;
+            --transition-speed: 0.4s;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition for colors */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
+
+        /* Header */
         header {
-            background-color: #333;
+            background: linear-gradient(135deg, #023e8a, #0096c7);
             color: white;
-            padding: 10px 0;
+            padding: 20px 0;
             text-align: center;
         }
+
         header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
             margin: 0;
         }
+
+        /* Navbar */
         nav {
             text-align: center;
-            background-color: #555;
-            padding: 10px 0;
+            padding: 20px 0;
         }
+
         nav a {
-            color: white;
-            margin: 0 15px;
+            color: var(--accent-color);
+            margin: 0 20px;
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 1.2rem;
+            transition: color var(--transition-speed);
         }
+
         nav a:hover {
-            text-decoration: underline;
-            color: #ffcc00; /* Highlight color on hover */
+            color: var(--hover-color);
         }
+
+        /* Main Section Styling */
         section {
-            margin: 20px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            opacity: 0; /* Start hidden for fade-in effect */
-            transform: translateY(20px); /* Slide effect */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+            margin: 40px auto;
+            padding: 40px;
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius);
+            width: 80%;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
         }
-        section.visible {
-            opacity: 1; /* Make visible */
-            transform: translateY(0); /* Slide back to original position */
-        }
+
         section:hover {
-            transform: translateY(-5px) scale(1.02); /* Move up and scale slightly on hover */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Enhance shadow for depth effect */
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
         }
+
         h2 {
-            color: #333;
+            color: var(--accent-color);
+            font-size: 2rem;
         }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: white;
+
+        p, li {
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
+
+        ul {
+            list-style-type: square;
+        }
+
+        /* Profile Image */
         .profile-image {
             display: block;
-            margin: 0 auto 20px;
-            width: 150px;
-            height: 150px;
+            margin: 0 auto 30px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
         /* Button styles */
         .toggle-button {
-            display: none; /* Hide toggle button */
+            display: none;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            opacity: 0;
+            animation: fadeIn var(--transition-speed) ease-out forwards;
+        }
+
+        section:nth-child(odd) {
+            animation-delay: 0.3s;
+        }
+
+        section:nth-child(even) {
+            animation-delay: 0.5s;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Benjamin Acuff's Portfolio</h1>
+        <h1>Benjamin Acuff | Cybersecurity Portfolio</h1>
     </header>
     
     <nav>
         <a href="#about-me">About Me</a>
         <a href="#resume">Resume</a>
         <a href="#academic-work">Academic Work</a>
-        <a href="#internship-content">Internship Content</a>
+        <a href="#internship-content">Internship</a>
         <a href="#linkedin">LinkedIn</a>
     </nav>
     
     <section id="about-me">
         <h2>About Me</h2>
         <img src="Benjamin_Acuff.PNG" alt="Benjamin Acuff" class="profile-image">
-        <p>Hi! I’m Benjamin Acuff, a cybersecurity student with a passion for defending enterprise systems and protecting company assets. I’m currently working as a service desk technician and looking forward to advancing my skills in cybersecurity. This portfolio showcases my academic and professional projects. Feel free to explore and connect with me!</p>
+        <p>Hi! I’m Benjamin Acuff, a dedicated cybersecurity professional with hands-on experience in defending and protecting IT environments. As a Service Desk intern, I aim to expand my knowledge in cybersecurity, network security, and IT systems. This portfolio showcases my academic work, professional projects, and leadership achievements.</p>
     </section>
     
     <section id="resume">
         <h2>Resume</h2>
-        <p><a href="Resume_Benjamin_Acuff.pdf" target="_blank">View my resume</a></p>
+        <p><a href="Resume_Benjamin_Acuff.pdf" target="_blank" style="color: var(--accent-color);">View my resume</a></p>
     </section>
 
     <section id="academic-work">
@@ -109,10 +163,10 @@
             <li><strong>Posters-at-the-Capitol Research Project:</strong> 
                 <a href="https://digitalcommons.murraystate.edu/postersatthecapitol/2024/NKU/12/" target="_blank">View Project</a>
             </li>
-            <li><strong>Advancing IoT Network Security: Examining Traffic Analysis Techniques and Attack Prevention Mechanisms - CYS 485 Research Paper:</strong> 
+            <li><strong>Advancing IoT Network Security (CYS 485 Research Paper):</strong> 
                 <a href="CYS_485_Research_Paper_Benjamin_Acuff.pdf" target="_blank">View PDF</a>
             </li>
-            <li><strong>Risk Management Plan - CYS 310 Final Project:</strong> 
+            <li><strong>Risk Management Plan (CYS 310 Final Project):</strong> 
                 <a href="CYS_310_Risk_Management_Plan_Benjamin_Acuff.pdf" target="_blank">View PDF</a>
             </li>
         </ul>
@@ -120,17 +174,17 @@
     
     <section id="internship-content">
         <h2>Internship Content</h2>
-        <p><a href="Internship_Learning_Objectives_Benjamin_Acuff.pdf" target="_blank">View my internship learning objectives</a></p>
+        <p><a href="Internship_Learning_Objectives_Benjamin_Acuff.pdf" target="_blank" style="color: var(--accent-color);">View my internship learning objectives</a></p>
     </section>
 
     <section id="linkedin">
         <h2>Connect with me on LinkedIn</h2>
         <p>You can find me on LinkedIn for networking and collaboration:</p>
-        <p><a href="https://www.linkedin.com/in/benjaminacuff" target="_blank">View my LinkedIn</a></p>
+        <p><a href="https://www.linkedin.com/in/benjaminacuff" target="_blank" style="color: var(--accent-color);">View my LinkedIn</a></p>
     </section>
 
     <footer>
-        <p>&copy; 2024 Benjamin Acuff. All rights reserved.</p>
+        <p>&copy; 2024 Benjamin Acuff | All rights reserved.</p>
     </footer>
 
     <script>
@@ -138,35 +192,12 @@
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-
                 const target = document.querySelector(this.getAttribute('href'));
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
             });
-        });
-
-        // Fade-in effect for sections
-        const sections = document.querySelectorAll('section');
-
-        const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, options);
-
-        sections.forEach(section => {
-            observer.observe(section);
         });
     </script>
 </body>
