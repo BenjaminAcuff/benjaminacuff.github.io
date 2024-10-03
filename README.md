@@ -28,7 +28,7 @@ To run this project locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/your-repository-name.git
+   git clone https://github.com/BenjaminAcuff/benjaminacuff.github.io.git
    ```
 ## Usage
 Once you have the project open in your browser, you can navigate through the different sections using the navigation links at the top. Explore the content to learn more about my academic work, resume, and internship experience. You can also connect with me on LinkedIn through the provided link.
