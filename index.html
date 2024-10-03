@@ -11,6 +11,8 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for colors */
         }
         header {
             background-color: #333;
@@ -71,11 +73,44 @@
             border-radius: 50%;
             object-fit: cover;
         }
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        header.dark-mode {
+            background-color: #1e1e1e;
+        }
+        nav.dark-mode {
+            background-color: #444;
+        }
+        section.dark-mode {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        footer.dark-mode {
+            background-color: #1e1e1e;
+        }
+        /* Button styles */
+        .toggle-button {
+            cursor: pointer;
+            padding: 10px;
+            margin: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .toggle-button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Benjamin Acuff's Portfolio</h1>
+        <button class="toggle-button" id="mode-toggle">Switch to Dark Mode</button>
     </header>
     
     <nav>
@@ -161,6 +196,20 @@
 
         sections.forEach(section => {
             observer.observe(section);
+        });
+
+        // Light/Dark Mode Toggle
+        const toggleButton = document.getElementById('mode-toggle');
+        let isDarkMode = false;
+
+        toggleButton.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            header.classList.toggle('dark-mode', isDarkMode);
+            nav.classList.toggle('dark-mode', isDarkMode);
+            sections.forEach(section => section.classList.toggle('dark-mode', isDarkMode));
+            footer.classList.toggle('dark-mode', isDarkMode);
+            toggleButton.textContent = isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode';
         });
     </script>
 </body>
