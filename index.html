@@ -30,9 +30,11 @@
             color: white;
             margin: 0 15px;
             text-decoration: none;
+            transition: color 0.3s;
         }
         nav a:hover {
             text-decoration: underline;
+            color: #ffcc00; /* Highlight color on hover */
         }
         section {
             margin: 20px;
@@ -40,6 +42,13 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Start hidden for fade-in effect */
+            transform: translateY(20px); /* Slide effect */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+        }
+        section.visible {
+            opacity: 1; /* Make visible */
+            transform: translateY(0); /* Slide back to original position */
         }
         h2 {
             color: #333;
@@ -50,14 +59,13 @@
             background-color: #333;
             color: white;
         }
-        /* Style for circular image */
         .profile-image {
             display: block;
-            margin: 0 auto 20px; /* Center the image and add bottom space */
-            width: 150px; /* Adjust the size of the image */
+            margin: 0 auto 20px;
+            width: 150px;
             height: 150px;
-            border-radius: 50%; /* Make the image circular */
-            object-fit: cover; /* Ensure the image fits well inside the circle */
+            border-radius: 50%;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -71,12 +79,11 @@
         <a href="#resume">Resume</a>
         <a href="#academic-work">Academic Work</a>
         <a href="#internship-content">Internship Content</a>
-        <a href="#linkedin">LinkedIn</a> <!-- New LinkedIn link -->
+        <a href="#linkedin">LinkedIn</a>
     </nav>
     
     <section id="about-me">
         <h2>About Me</h2>
-        <!-- Add the circular image here -->
         <img src="Benjamin_Acuff.PNG" alt="Benjamin Acuff" class="profile-image">
         <p>Hi! I’m Benjamin Acuff, a cybersecurity student with a passion for defending enterprise systems and protecting company assets. I’m currently working as a service desk technician and looking forward to advancing my skills in cybersecurity. This portfolio showcases my academic and professional projects. Feel free to explore and connect with me!</p>
     </section>
@@ -110,4 +117,47 @@
         <h2>Connect with me on LinkedIn</h2>
         <p>You can find me on LinkedIn for networking and collaboration:</p>
         <p><a href="https://www.linkedin.com/in/benjaminacuff" target="_blank">View my LinkedIn</a></p>
-       
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Benjamin Acuff. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Fade-in effect for sections
+        const sections = document.querySelectorAll('section');
+
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
