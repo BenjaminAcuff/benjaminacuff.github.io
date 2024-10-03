@@ -21,9 +21,9 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
+            background: linear-gradient(135deg, #023e8a, #0096c7); /* Updated to match header gradient */
             color: var(--text-color);
-            transition: background-color var(--transition-speed), color var(--transition-speed);
+            transition: background var(--transition-speed), color var(--transition-speed);
         }
 
         /* Header */
@@ -41,12 +41,6 @@
             margin: 0;
             transition: transform var(--transition-speed), color var(--transition-speed);
         }
-
-        /* Removed hover effect on header title */
-        /* header h1:hover {
-            transform: scale(1.05); 
-            color: var(--accent-color); 
-        } */
 
         #spinning-star {
             display: inline-block;
@@ -221,43 +215,36 @@
             <li><strong>Posters-at-the-Capitol Research Project:</strong> 
                 <a href="https://digitalcommons.murraystate.edu/postersatthecapitol/2024/NKU/12/" target="_blank">View Project</a>
             </li>
-            <li><strong>Advancing IoT Network Security (CYS 485 Research Paper):</strong> 
-                <a href="CYS_485_Research_Paper_Benjamin_Acuff.pdf" target="_blank">View PDF</a>
+            <li><strong>Cybersecurity Lab Reports:</strong> 
+                <a href="https://github.com/benacuff/cybersecurity-labs" target="_blank">View Labs</a>
             </li>
-            <li><strong>Risk Management Plan (CYS 310 Final Project):</strong> 
-                <a href="CYS_310_Risk_Management_Plan_Benjamin_Acuff.pdf" target="_blank">View PDF</a>
+            <li><strong>Capstone Project (ETBR):</strong> 
+                <a href="https://doi.org/10.1007/978-3-031-43880-5_11" target="_blank">View Project</a>
             </li>
         </ul>
     </section>
     
     <section id="internship-content">
-        <h2>Internship Experience</h2>
-        <p>As a Service Desk Intern at an IT company, I assist in troubleshooting and resolving IT issues while enhancing my skills in customer service, network security, and systems administration.</p>
+        <h2>Internship Content</h2>
+        <p>As a Service Desk Intern, I handle various IT support tasks, including:</p>
+        <ul>
+            <li>IT ticket management and troubleshooting.</li>
+            <li>Assisting with network security measures.</li>
+            <li>Providing customer support and effective communication.</li>
+            <li>Collaborating on web development projects.</li>
+        </ul>
     </section>
-    
+
     <footer>
-        <p>© 2024 Benjamin Acuff | All Rights Reserved</p>
+        <p>&copy; 2024 Benjamin Acuff</p>
+        <p><a href="https://www.linkedin.com/in/benjamin-acuff/" target="_blank">Connect with me on LinkedIn</a></p>
     </footer>
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const sections = document.querySelectorAll("section");
-            const options = {
-                threshold: 0.1 // Trigger when 10% of the section is visible
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                    } else {
-                        entry.target.classList.remove("visible");
-                    }
-                });
-            }, options);
-
             sections.forEach(section => {
-                observer.observe(section);
+                section.classList.add("visible");
             });
         });
     </script>
