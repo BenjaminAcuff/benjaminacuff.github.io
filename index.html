@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benjamin Acuff | Cybersecurity Portfolio</title>
-    <link rel="icon" type="image/png" href="Benjamin_Acuff_ico.PNG">
+    <link rel="icon" type="image/png" href="Benjamin_Acuff_ico">
     <style>
         /* Root styles for theming */
         :root {
@@ -42,10 +42,11 @@
             transition: transform var(--transition-speed), color var(--transition-speed);
         }
 
-        header h1:hover {
-            transform: scale(1.05); /* Slightly enlarges the title */
-            color: var(--accent-color); /* Changes color on hover */
-        }
+        /* Removed hover effect on header title */
+        /* header h1:hover {
+            transform: scale(1.05); 
+            color: var(--accent-color); 
+        } */
 
         #spinning-star {
             display: inline-block;
@@ -205,7 +206,7 @@
     
     <section id="about-me">
         <h2>About Me</h2>
-        <img src="Benjamin_Acuff.PNG" alt="Benjamin Acuff" class="profile-image">
+        <img src="Benjamin_Acuff" alt="Benjamin Acuff" class="profile-image">
         <p>Hi! I’m Benjamin Acuff, a dedicated cybersecurity professional with hands-on experience in defending and protecting IT environments. As a Service Desk intern, I aim to expand my knowledge in cybersecurity, network security, and IT systems. This portfolio showcases my academic work, professional projects, and leadership achievements.</p>
     </section>
     
@@ -231,26 +232,32 @@
     
     <section id="internship-content">
         <h2>Internship Experience</h2>
-        <p>As a Service Desk Intern at an IT company, I am involved in various projects focusing on:</p>
-        <ul>
-            <li>Systems administration</li>
-            <li>Effective business communication</li>
-            <li>Cybersecurity solutions configuration</li>
-            <li>Web development and troubleshooting</li>
-            <li>IT ticket management</li>
-        </ul>
+        <p>As a Service Desk Intern at an IT company, I assist in troubleshooting and resolving IT issues while enhancing my skills in customer service, network security, and systems administration.</p>
     </section>
     
     <footer>
-        <p>&copy; 2024 Benjamin Acuff | <a href="https://www.linkedin.com/in/benjamin-acuff" target="_blank">LinkedIn Profile</a></p>
+        <p>© 2024 Benjamin Acuff | All Rights Reserved</p>
     </footer>
     
     <script>
-        // Adding visibility to sections on load
         document.addEventListener("DOMContentLoaded", function() {
             const sections = document.querySelectorAll("section");
+            const options = {
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    } else {
+                        entry.target.classList.remove("visible");
+                    }
+                });
+            }, options);
+
             sections.forEach(section => {
-                section.classList.add("visible");
+                observer.observe(section);
             });
         });
     </script>
