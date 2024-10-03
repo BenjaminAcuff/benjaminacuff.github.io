@@ -43,8 +43,9 @@
 
         #spinning-star {
             display: inline-block;
-            animation: spin 4s linear infinite;
+            animation: spin 6s linear infinite; /* Slower spin */
             margin-left: 15px;
+            margin-top: 20px; /* Added more padding above the star */
         }
 
         @keyframes spin {
@@ -229,52 +230,44 @@
 
     <section id="linkedin">
         <h2>Connect with me on LinkedIn</h2>
-        <p>You can find me on LinkedIn for networking and collaboration:</p>
-        <p><a href="https://www.linkedin.com/in/benjaminacuff" target="_blank">View my LinkedIn</a></p>
+        <p><a href="https://www.linkedin.com/in/benjamin-acuff-0a5b71258/" target="_blank">My LinkedIn Profile</a></p>
     </section>
 
     <footer>
-        <p>&copy; 2024 Benjamin Acuff | All rights reserved.</p>
+        <p>&copy; 2024 Benjamin Acuff. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // Smooth scrolling
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-        });
+        // Dynamic title generation
+        const titles = ["Aspiring Cybersecurity Leader", "Tech Enthusiast", "Continuous Learner", "Passionate about Cyber Defense"];
+        let titleIndex = 0;
 
-        // Scroll-based fade-in animation for sections
-        const sections = document.querySelectorAll('section');
+        function updateTitle() {
+            document.getElementById('dynamic-title').innerText = titles[titleIndex];
+            titleIndex = (titleIndex + 1) % titles.length;
+        }
+
+        setInterval(updateTitle, 3000); // Change title every 3 seconds
+
+        // Scroll effects for sections
+        const sections = document.querySelectorAll("section");
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add("visible");
                 }
             });
-        });
+        }, options);
 
         sections.forEach(section => {
             observer.observe(section);
         });
-
-        // Typing animation for header
-        const titleText = "Benjamin Acuff | Cybersecurity Portfolio";
-        let i = 0;
-        function typeWriter() {
-            if (i < titleText.length) {
-                document.getElementById('dynamic-title').innerHTML += titleText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        window.onload = typeWriter;
     </script>
 </body>
 </html>
